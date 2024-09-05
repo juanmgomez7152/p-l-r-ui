@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/para-la-raza-ui",
             "index": "src/index.html",
@@ -57,6 +57,8 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "fast-api": {
             }
           },
           "defaultConfiguration": "production"
@@ -69,6 +71,10 @@
             },
             "development": {
               "buildTarget": "para-la-raza-ui:build:development"
+            },
+            "fast-api": {
+              "buildTarget": "para-la-raza-ui:build:fast-api",
+              "proxyConfig": "proxy-fast-api.conf.json"
             }
           },
           "defaultConfiguration": "development"
