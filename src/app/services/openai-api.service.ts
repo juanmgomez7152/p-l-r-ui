@@ -5,11 +5,10 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class OpenAIService {
 
   constructor(private http :HttpClient) { }
   
-  public getTranslation(text: string) {
-    
+  public getTranslation(text: string) {    
   }
 }

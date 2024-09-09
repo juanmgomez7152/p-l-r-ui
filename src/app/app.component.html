@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brown Neutral Aesthetic</title>
-</head>
-<body>
-  <div class="container">
-    <div class="banner">
-      <!-- <h5>Settings</h5>
-      <ul>
-        <li>Tab 1</li>
-        <li>Tab 2</li>
-        <li>Sub Application</li>
-      </ul> -->
-    </div>
-    <div class="main-content">
-      <header>
-        <p style="font-size:x-large;">Bienvenidos al Traductor</p>
-        <hr>
-      </header>
-      <div class="content">
-        <!-- Your components will go here -->
+<div class="container" fxLayout="row" fxLayoutAlign="start stretch">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <mat-toolbar>Heramientas</mat-toolbar>
+      <mat-nav-list>
+        <mat-list-item>Traductor</mat-list-item>
+        <mat-list-item>$</mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div>
+        <mat-toolbar color="primary">
+          <span>Bienvenidos al Traductor</span>
+        </mat-toolbar>
+        <mat-divider></mat-divider>
+        <div class="content" fxLayout="column">
+          <app-translation-chat></app-translation-chat>
+        </div>
       </div>
-    </div>
-  </div>
-</body>
-</html>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

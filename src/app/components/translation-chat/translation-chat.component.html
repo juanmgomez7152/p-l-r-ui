@@ -1,0 +1,36 @@
+<!-- translation-chat.component.html -->
+<div>
+    <mat-card style="height: 500px; overflow-y: scroll; -ms-overflow-style: none; scrollbar-width: none;">
+      <mat-card-content *ngFor="let message of messagesList">
+        <!-- User message display -->
+        <mat-card style="margin-top: 10px; margin-bottom: 10px;">
+            <p>
+                {{message.userMessage}}
+            </p>
+        </mat-card>
+  
+        <!-- System message display -->
+        <mat-card style="margin-top: 10px; margin-bottom: 0px; background-color: #4E444B;">
+            <p style="margin-top:10px;color: black;">
+                {{message.responseMessage}}
+            </p>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+</div>
+<!-- Input container for user message -->
+<div class="input-container" style="display: flex; align-items: center; margin-top: 10px;">
+    <mat-form-field style="flex: 1;">
+        <input matInput placeholder="Type your message here" [(ngModel)]="userMessage">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+</div>
+<div *ngIf="showLoader">
+    <mat-spinner style="margin-top: 10px;"></mat-spinner>
+</div>
+
+<!-- <style>
+    mat-card::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+    }
+</style> -->
