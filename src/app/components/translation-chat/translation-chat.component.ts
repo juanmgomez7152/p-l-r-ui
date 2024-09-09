@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-// import { OpenAIService } from "../../services/openai-api.service";
+import { OpenAIService } from "../../services/openai-api.service";
 
 @Component({
   selector: "app-translation-chat",
@@ -12,11 +12,17 @@ export class TranslationChatComponent{
   responseMessage: string = "";
   showLoader: boolean = false;
   
-  // constructor(private service: OpenAIService) {}
+  constructor(private service: OpenAIService) {}
 
   sendMessage() {
     this.showLoader = true;
     this.messagesList.push({ userMessage: this.userMessage});
     this.userMessage = "";
+  }
+  
+  test() {
+    this.service.test().subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }

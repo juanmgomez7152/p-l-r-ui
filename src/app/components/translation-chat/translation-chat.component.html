@@ -24,6 +24,7 @@
         <input matInput placeholder="Type your message here" [(ngModel)]="userMessage">
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+    <button mat-raised-button color="secondary" (click)="test()">TEST</button>
 </div>
 <div *ngIf="showLoader">
     <mat-spinner style="margin-top: 10px;"></mat-spinner>

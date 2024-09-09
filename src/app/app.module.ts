@@ -15,6 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { TranslationChatComponent } from './components/translation-chat/translation-chat.component';
 import { OpenAIService } from './services/openai-api.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,11 @@ import { OpenAIService } from './services/openai-api.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [OpenAIService],
+  providers: [DatePipe,DecimalPipe
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Add this line if you are using custom web components
 })

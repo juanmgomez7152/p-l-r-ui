@@ -9,6 +9,7 @@ export class OpenAIService {
 
   constructor(private http :HttpClient) { }
   
-  public getTranslation(text: string) {    
+  public test() {    
+    return this.http.get(environment.apiUrl + '/translation/hello');
   }
 }
