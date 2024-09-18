@@ -1,16 +1,26 @@
 <div class="container" fxLayout="row" fxLayoutAlign="start stretch">
   <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-      <mat-toolbar>Heramientas</mat-toolbar>
+    <mat-sidenav mode="side" opened style="border-color: #978A92;">
+      <mat-toolbar>
+        Para La Raza
+      </mat-toolbar>
       <mat-nav-list>
-        <mat-list-item>Traductor</mat-list-item>
-        <mat-list-item>$</mat-list-item>
+        <div *ngFor="let app of listApps">
+          <mat-list-item>
+            <mat-icon>
+              {{app.icon}}
+            </mat-icon> 
+          </mat-list-item>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content style="height: 100%;width:auto;overflow:hidden">
       <div>
-        <mat-toolbar color="primary">
-          <span>Bienvenidos al Traductor</span>
+        <mat-toolbar style="background-color: #810081;">
+          <mat-icon style="margin-top: 0px;">translate</mat-icon>
+          <span>
+            Bienvenidos al Traductor
+          </span>
         </mat-toolbar>
         <mat-divider></mat-divider>
         <div class="content" fxLayout="column">

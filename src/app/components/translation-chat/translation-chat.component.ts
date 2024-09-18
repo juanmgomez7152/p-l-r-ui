@@ -11,33 +11,52 @@ export class TranslationChatComponent{
   userMessage: string = "";
   responseMessage: string = "";
   showLoader: boolean = false;
+  selectedFile: File | null = null;
   
   constructor(private service: OpenAIService) {}
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.sendPicture();
+  }
+
+  sendPicture() {
+    if (!this.selectedFile) {
+      console.error("No file selected");
+      return;
+    }
+
+    this.showLoader = true;
+    this.service.uploadPicture(this.selectedFile).subscribe((response: any) => {
+      let parsedResponse = JSON.parse(response);
+
+      this.userMessage = parsedResponse.extracted_text;
+
+      this.showLoader = false;
+    }, (error) => {
+      console.error(error);
+      this.showLoader = false;
+    });
+  }
+
   sendMessage() {
     this.showLoader = true;
-    this.messagesList.push({ userMessage: this.userMessage});
-
-    this.service.translateMessage(this.userMessage).subscribe((response: any) => {
+    let message = this.userMessage;
+    this.userMessage="";
+    this.messagesList.push({ userMessage: message});
+    this.service.translateMessage(message).subscribe((response: any) => {
       let parsedResponse = JSON.parse(response);
       this.responseMessage = parsedResponse.answer;
-      console.log(this.responseMessage);
 
       this.messagesList[this.messagesList.length - 1].responseMessage = this.responseMessage;
 
-      this.showLoader = false;
-      this.userMessage =this.responseMessage="";
+      this.showLoader = false
+      this.responseMessage="";
     }, (error) => {
       console.error(error);
       this.showLoader = false;
     });
     
-  }
-  
-  test() {
-    this.service.test().subscribe((response: any) => {
-      console.log(response);
-    });
   }
 
   deleteMessages() {

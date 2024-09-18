@@ -17,6 +17,12 @@ export class OpenAIService {
     return this.http.post<any>(environment.apiUrl + '/translation/send-message/', { message: userMessage });
   }
 
+  public uploadPicture(file: File){
+    const formData = new FormData();
+    formData.append("file", file);
+    return this.http.post(environment.apiUrl+"/translation/upload-picture/", formData);
+  }
+
   public deleteHistory() {
     return this.http.delete(environment.apiUrl + '/translation/delete-history')
   }
