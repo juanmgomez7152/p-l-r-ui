@@ -20,21 +20,25 @@
 </div>
 <!-- Input container for user message -->
 <div class="input-container" style="display: flex; align-items: center; margin-top: 10px;">
-    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="fileInput.click()">
+    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="fileInput.click()" [disabled]="showLoader">
         <mat-icon>add</mat-icon>
     </button>
-    <mat-form-field style="flex: 1;height:60px">
-        <input matInput placeholder="Type your message here" [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" style="margin-bottom:30px; font-size: 20px;">
-    </mat-form-field>
-    <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
-    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="sendMessage()">
+    <mat-form-field style="flex: 1;">
+        <mat-label>Escriba el mensaje que quiera traducir</mat-label>
+        <textarea matInput [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" [ngStyle]="{'color': mediaBasedInput ? 'yellow' : 'inherit'}" [disabled]="showLoader"></textarea>
+        </mat-form-field>
+        <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="sendMessage()" [disabled]="showLoader">
         <mat-icon>send</mat-icon>
     </button>
-    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="deleteMessages()">
+    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px;" (click)="deleteMessages()" [disabled]="showLoader">
         <mat-icon>delete</mat-icon>
     </button>
 </div>
 <div *ngIf="showLoader">
+    <p>
+        Por favor tenga paciencia...
+    </p>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 

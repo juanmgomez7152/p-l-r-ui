@@ -10,6 +10,7 @@ export class TranslationChatComponent{
   messagesList: any[] = [];
   userMessage: string = "";
   responseMessage: string = "";
+  mediaBasedInput: boolean = false;
   showLoader: boolean = false;
   selectedFile: File | null = null;
   
@@ -28,11 +29,10 @@ export class TranslationChatComponent{
 
     this.showLoader = true;
     this.service.uploadPicture(this.selectedFile).subscribe((response: any) => {
-      let parsedResponse = JSON.parse(response);
-
-      this.userMessage = parsedResponse.extracted_text;
-
       this.showLoader = false;
+      let parsedResponse = JSON.parse(response);
+      this.mediaBasedInput = true;
+      this.userMessage = parsedResponse.extracted_text;
     }, (error) => {
       console.error(error);
       this.showLoader = false;
@@ -43,6 +43,7 @@ export class TranslationChatComponent{
     this.showLoader = true;
     let message = this.userMessage;
     this.userMessage="";
+    this.mediaBasedInput = false;
     this.messagesList.push({ userMessage: message});
     this.service.translateMessage(message).subscribe((response: any) => {
       let parsedResponse = JSON.parse(response);
