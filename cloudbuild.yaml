@@ -1,0 +1,17 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-f",
+        "dockerfile.prod",
+        "-t",
+        "us-central1-docker.pkg.dev/p-l-r-ui/p-l-r-ui/p-l-r-ui:latest",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "us-central1-docker.pkg.dev/p-l-r-ui/p-l-r-ui/p-l-r-ui:latest",
+      ]

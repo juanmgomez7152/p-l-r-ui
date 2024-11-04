@@ -1,0 +1,19 @@
+{
+    "name": "Angular Dev Container",
+    "build": {
+        "dockerfile": "../dockerfile.dev",
+        "context": ".."
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "angular.ng-template",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode"
+        ]
+      }
+    },
+    "forwardPorts": [4200],
+    "postCreateCommand": "npm install",
+    "remoteUser": "node"
+  }
