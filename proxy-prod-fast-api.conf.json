@@ -1,0 +1,15 @@
+{
+    "/rest": {
+        "target": "https://p-l-r-api-service-332949365913.us-east1.run.app",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "headers": {
+            "Connection": "keep-alive"
+        },
+        "ssl": {
+            "rejectUnauthorized": false
+        },
+        "protocolRewrite": "https"
+    }
+}
