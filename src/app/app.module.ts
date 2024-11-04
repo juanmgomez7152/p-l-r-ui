@@ -15,9 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
 import { TranslationChatComponent } from './components/translation-chat/translation-chat.component';
 import { OpenAIService } from './services/openai-api.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -25,6 +27,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   declarations: [
     AppComponent,
     TranslationChatComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatButtonModule,
     FormsModule,
     MatProgressBarModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [DatePipe,DecimalPipe, provideAnimationsAsync()
   ],
