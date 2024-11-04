@@ -1,0 +1,107 @@
+@import '@angular/material/theming';
+
+// Custom Brown and Tan Palettes
+$custom-brown-palette: (
+  50: #efebe9,
+  100: #d7ccc8,
+  200: #bcaaa4,
+  300: #a1887f,
+  400: #8d6e63,
+  500: #795548, // Main brown color
+  600: #6d4c41,
+  700: #5d4037,
+  800: #4e342e,
+  900: #3e2723,
+  A100: #d7ccc8,
+  A200: #bcaaa4,
+  A400: #8d6e63,
+  A700: #5d4037,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $white-87-opacity,
+    500: $white-87-opacity,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $white-87-opacity,
+    A700: $white-87-opacity,
+  )
+);
+
+$custom-tan-palette: (
+  50: #faf3e0,
+  100: #f4e3b0,
+  200: #ebd387,
+  300: #e2c25e,
+  400: #d9a82f,
+  500: #cf9f29, // Main tan color
+  600: #b88924,
+  700: #a1741f,
+  800: #8a5f1a,
+  900: #735014,
+  A100: #f4e3b0,
+  A200: #ebd387,
+  A400: #d9a82f,
+  A700: #a1741f,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $white-87-opacity,
+    500: $white-87-opacity,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $white-87-opacity,
+    A700: $white-87-opacity,
+  )
+);
+
+// Define Light Theme
+$custom-brown-theme: mat-light-theme(
+  (
+    color: (
+      primary: $custom-brown-palette,
+      accent: $custom-tan-palette,
+      warn: mat-palette($mat-red), // Optional: Keep red for warnings
+    ),
+    background: (
+      default: mat-color($custom-tan-palette, 50), // Light tan background
+      card: mat-color($custom-tan-palette, 100),
+      dialog: mat-color($custom-tan-palette, 100),
+      app-bar: mat-color($custom-brown-palette, 500), // Brown app bar
+      status-bar: mat-color($custom-brown-palette, 700),
+    )
+  )
+);
+
+// Define Dark Theme (Optional)
+$custom-brown-dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $custom-brown-palette,
+      accent: $custom-tan-palette,
+      warn: mat-palette($mat-red),
+    ),
+    background: (
+      default: mat-color($custom-brown-palette, 900), // Dark brown background
+      card: mat-color($custom-brown-palette, 800),
+      dialog: mat-color($custom-brown-palette, 700),
+      app-bar: mat-color($custom-brown-palette, 800),
+      status-bar: mat-color($custom-brown-palette, 900),
+    )
+  )
+);
+
+// Export the light theme for use in styles.scss
+@include angular-material-theme($custom-brown-theme);

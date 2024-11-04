@@ -19,6 +19,7 @@ import { TranslationChatComponent } from './components/translation-chat/translat
 import { OpenAIService } from './services/openai-api.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DatePipe, DecimalPipe } from '@angular/common';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
     MatProgressBarModule,
     HttpClientModule
   ],
-  providers: [DatePipe,DecimalPipe
+  providers: [DatePipe,DecimalPipe, provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Add this line if you are using custom web components

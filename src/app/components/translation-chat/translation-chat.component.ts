@@ -9,6 +9,7 @@ import { OpenAIService } from "../../services/openai-api.service";
 export class TranslationChatComponent{
   messagesList: any[] = [];
   userMessage: string = "";
+  mediaMessage: string = "";
   responseMessage: string = "";
   mediaBasedInput: boolean = false;
   showLoader: boolean = false;
@@ -18,6 +19,7 @@ export class TranslationChatComponent{
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
     this.sendPicture();
   }
 
@@ -32,7 +34,8 @@ export class TranslationChatComponent{
       this.showLoader = false;
       let parsedResponse = JSON.parse(response);
       this.mediaBasedInput = true;
-      this.userMessage = parsedResponse.extracted_text;
+      this.userMessage = this.mediaMessage =parsedResponse.extracted_text;
+      this.selectedFile = null;
     }, (error) => {
       console.error(error);
       this.showLoader = false;
