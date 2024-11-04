@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import { OpenAIService } from "../../services/openai-api.service";
 
 @Component({
@@ -7,6 +7,7 @@ import { OpenAIService } from "../../services/openai-api.service";
 })
 
 export class TranslationChatComponent{
+  @ViewChild('fileInput') fileInput!: ElementRef;
   messagesList: any[] = [];
   userMessage: string = "";
   mediaMessage: string = "";
@@ -19,8 +20,9 @@ export class TranslationChatComponent{
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile);
+    console.log("File submitted.");
     this.sendPicture();
+    this.fileInput.nativeElement.value = '';
   }
 
   sendPicture() {
@@ -55,6 +57,8 @@ export class TranslationChatComponent{
       this.messagesList[this.messagesList.length - 1].responseMessage = this.responseMessage;
 
       this.showLoader = false
+      this.mediaMessage = "";
+      this.mediaBasedInput = false;
       this.responseMessage="";
     }, (error) => {
       console.error(error);
