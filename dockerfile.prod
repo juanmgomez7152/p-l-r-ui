@@ -4,7 +4,7 @@ FROM node:18-bullseye AS build
 WORKDIR /app
 
 COPY package*.json ./
-COPY proxy-prod-fast-api-conf.json ./
+COPY proxy-prod-fast-api.conf.json ./
 RUN npm install
 
 COPY . .
@@ -15,9 +15,9 @@ RUN npm run build --configuration=prod-fast-api
 FROM nginx:alpine
 
 COPY --from=build /app/dist/para-la-raza-ui /usr/share/nginx/html
-COPY --from=build /app/proxy-prod-fast-api-conf.json /etc/nginx/
+COPY --from=build /app/proxy-prod-fast-api.conf.json /etc/nginx/
 
-ENV PROXY_CONFIG=proxy-prod-fast-api-conf.json
+ENV PROXY_CONFIG=proxy-prod-fast-api.conf.json
 
 EXPOSE 80
 
