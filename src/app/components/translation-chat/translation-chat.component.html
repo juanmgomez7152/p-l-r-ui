@@ -24,12 +24,12 @@
         <mat-icon>add</mat-icon>
     </button>
     <mat-form-field style="flex: 1;">
-        <mat-label>Escriba el mensaje que quiera traducir</mat-label>
+        <mat-label>Escriba Aqui...</mat-label>
         <textarea matInput [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" [ngStyle]="{'color': (userMessage != mediaMessage) ? 'inherit' : 'yellow'}" [disabled]="showLoader"></textarea>
         </mat-form-field>
         <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
     <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="sendMessage()" [disabled]="showLoader">
-        <mat-icon>translate</mat-icon>
+        <mat-icon>send</mat-icon>
     </button>
     <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px;" (click)="deleteMessages()" [disabled]="showLoader">
         <mat-icon>delete</mat-icon>
