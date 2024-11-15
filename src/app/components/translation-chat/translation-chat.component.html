@@ -4,14 +4,14 @@
       <mat-card-content *ngFor="let message of messagesList">
         <!-- User message display -->
         <mat-card style="margin-top: 10px; margin-bottom: 10px;">
-            <p style="margin-left:10px;color:#C9C2CB;white-space: pre-wrap;">
+            <p style="margin-left:10px;color:#C9C2CB;">
                 {{message.userMessage}}
             </p>
         </mat-card>
   
         <!-- System message display -->
         <mat-card style="margin-top: 10px; margin-bottom: 0px; background-color: #4E444B;">
-            <p style="margin-top:10px;margin-left:10px;color: #C9C2CB;white-space: pre-wrap;">
+            <p style="margin-top:10px;margin-left:10px;color: #C9C2CB;">
                 {{message.responseMessage}}
             </p>
         </mat-card>
