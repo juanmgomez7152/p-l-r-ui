@@ -28,7 +28,10 @@
         <textarea matInput [(ngModel)]="userMessage" (keyup.enter)="sendMessage()" [ngStyle]="{'color': (userMessage != mediaMessage) ? 'inherit' : 'yellow'}" [disabled]="showLoader"></textarea>
         </mat-form-field>
         <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
-    <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" (click)="sendMessage()" [disabled]="showLoader">
+    <button mat-mini-fab 
+        style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px" 
+        (click)="sendMessage()" 
+        [disabled]="showLoader || !userMessage.trim() || (userMessage.split(' ').length < 3)">
         <mat-icon>send</mat-icon>
     </button>
     <button mat-mini-fab style="background-color:#1E1A1D;box-shadow:none;margin-bottom:20px;" (click)="deleteMessages()" [disabled]="showLoader">
